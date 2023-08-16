@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChessZone</title>
+    <link rel="shortcut icon" href="https://pps.whatsapp.net/v/t61.24694-24/361599262_995544588299211_8019110589129396131_n.jpg?ccb=11-4&oh=01_AdSLuGsbm31clIgNSi0awcSr1CrbxgUzm2uKv8Sc9p1IUA&oe=64C3584B" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: #1100ff;
+            height: 55px;
+            font-size: 40px;
+            font-weight: 900;
+            padding: 20px;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        nav {
+            color: #ffffff;
+            padding: 10px;
+            background-color: #000;
+            word-spacing: -10px;
+        }
+
+        article {
+            background-color: #fdba94;
+            color: #fff;
+            padding: 0px;
+            height: 2000px;
+        }
+        
+        header h1, nav ul {
+            margin: 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            word-spacing: 20px;
+        }
+        
+        nav ul li {
+            margin-right: 10px;
+        }
+        
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .video-thumbnail {
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+            float: left;
+        }
+        
+        .video-player {
+            max-width: 700px;
+            max-height: 1000px;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .fullscreen video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 600px;
+            max-height: 600px;
+        }
+
+        img {
+            height: 150px;
+            width: 240px;
+        }
+
+		button {
+            border: none;
+            background-color: #f0f0f0;
+            padding: .5rem;
+            margin: .5rem;
+            border-radius: 0.5rem;
+            box-shadow: 2px 2px 5px rgb(0, 0, 0);
+            transition: all 0.2s ease-in-out;
+            text-align: left;
+        }
+
+        button a {
+            display: block;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+        }
+
+        button a:hover {
+            margin-bottom: 5px;
+            margin-right: 2.5px;
+        }
+
+        
+        .header-emojis {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .header-emojis {
+            position: absolute;
+            top: 1px;
+            right: 50px;
+            font-size: 30px;
+        }
+
+        name {
+            color: rgb(47, 0, 255);
+        }
+
+        .header-emojis {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .hearder-image {
+            position: absolute;
+            top: 15px;
+            right: 50px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .hearder-image img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 3px solid #000;
+        }
+
+        .fullscreen img {
+            width: 500px;
+            height: 500px;
+        }
+
+        .download-button {
+            position: absolute;
+            left: 100px;
+            top: 5%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 75px;
+            top: 15%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fdba94;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #1b1b1b;
+            color: #fff;
+            padding: 30px;
+            font-size: 20px;
+        }
+
+        .footertexth2 {
+            margin-right: 5px;
+            font-size: 30px;
+            color: #ff0000;
+        }
+
+        /* Channel */
+        .ul {
+            margin: 2px auto;
+            width: 600px; /* Adjust the width as desired */
+            list-style: none;
+            margin-left: 50px;
+            padding: 0;
+
+        }
+        
+        .li {
+            margin-bottom: 5px;
+            border-radius: 8px;
+            background-color: #fff; 
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            padding: 2px;
+        }
+        
+        .name {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        
+        .name:hover {
+            text-decoration: underline;
+        }
+
+        .circle {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+        
+        .circle img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* search bar */
+        input[type="text"] {
+            padding: 10px;
+            width: 90%;
+            margin-left: 30px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 2px 2px #ccc;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>ChessZone 
+        <div class="hearder-image">
+            <img src="logo chessZone.png" alt="Logo" onclick="openFullscreen(this)">
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><font color="Black">0</font></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Article.html">| Article</a></li>
+            <li><a href="Channels.html">| Channels</a></li>
+        </ul>
+    </nav>
+    <article><br>
+        <!-- Channels -->
+        <ul class="ul">
+            <li class="li">
+                <h2><a class="name" href="CZ Mujahedul Anwar.html">
+                    <div class="circle">
+                        <img src="https://images.chesscomfiles.com/uploads/v1/user/263413569.f10d39ac.78x78o.91aeb4b6db73@3x.jpg">
+                    </div>Mujahedul Anwar
+                </a></h2>
+            </li>
+        </ul>
+
+        <ul class="ul">
+            <li class="li">
+                <h2><a class="name" href="CZ Zawata.html">
+                    <div class="circle">
+                        <img src="https://images.chesscomfiles.com/uploads/v1/user/268340277.1890a626.128x128o.520ef46a2c5d.jpg">
+                    </div>Zawata
+                </a></h2>
+            </li>
+        </ul>
+    </article>
+    <footer>
+        <h2 class="footertexth2">Chess World</h2>
+        <a href="https://forms.gle/cTNPyu3iene35KNs9"><font color="white"><b>| Create Channel</b></font></a>
+        <br>
+        <a href="https://forms.gle/AhRtVKyP8mH13geB8"><font color="white"><b>| Upload Video</b></font></a>
+        <br>
+        <a href="https://forms.gle/YBf3cPpLDro8y46W7"><font color="white"><b>| Share Article</b></font></a>
+            <p class="copyright">&copy; 2023 Chess World. <a href="Terms and policies.html"><font color="White">Terms and policy</font></a></p>
+    </footer>
+    
+    <script>
+
+document.getElementById("toggleMenuButton").addEventListener("click", function() {
+    var mainMenu = document.getElementById("mainMenu");
+    mainMenu.classList.toggle("show-menu");
+});
+
+
+
+        function toggleFullscreen(videoId) {
+            var video = document.getElementById(videoId);
+            
+            if (video.requestFullscreen) {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    video.requestFullscreen();
+                }
+            } else if (video.mozRequestFullScreen) { // Firefox
+                if (document.mozFullScreenElement) {
+                    document.mozCancelFullScreen();
+                } else {
+                    video.mozRequestFullScreen();
+                }
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                if (document.webkitFullscreenElement) {
+                    document.webkitExitFullscreen();
+                } else {
+                    video.webkitRequestFullscreen();
+                }
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                if (document.msFullscreenElement) {
+                    document.msExitFullscreen();
+                } else {
+                    video.msRequestFullscreen();
+                }
+            }
+        }
+
+        // code for fullscreen
+        function openFullscreen(img) {
+    var fullscreen = document.createElement('div');
+    fullscreen.classList.add('fullscreen');
+
+    var imgElement = document.createElement('img');
+    imgElement.src = img.src;
+
+    var downloadButton = document.createElement('button');
+    downloadButton.innerText = ' ↓ | DOWNLOAD ';
+    downloadButton.classList.add('download-button');
+    downloadButton.addEventListener('click', function() {
+        var link = document.createElement('a');
+        link.href = img.src;
+        link.download = 'image.jpg';
+        link.click();
+    });
+
+    var backButton = document.createElement('button');
+    backButton.innerText = '← | BACK';
+    backButton.classList.add('back-button');
+    backButton.addEventListener('click', function() {
+        fullscreen.remove();
+        document.removeEventListener('keydown', closeFullscreen);
+    });
+
+    fullscreen.appendChild(downloadButton);
+    fullscreen.appendChild(backButton);
+    fullscreen.appendChild(imgElement);
+    document.body.appendChild(fullscreen);
+
+    document.addEventListener('keydown', closeFullscreen);
+
+    function closeFullscreen(event) {
+        if (event.key === 'Escape') {
+            fullscreen.remove();
+            document.removeEventListener('keydown', closeFullscreen);
+        }
+    }
+}
+    </script>
+</body>
+</html>

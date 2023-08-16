@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChessZone</title>
+    <link rel="shortcut icon" href="https://pps.whatsapp.net/v/t61.24694-24/361599262_995544588299211_8019110589129396131_n.jpg?ccb=11-4&oh=01_AdSLuGsbm31clIgNSi0awcSr1CrbxgUzm2uKv8Sc9p1IUA&oe=64C3584B" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: #1100ff;
+            height: 55px;
+            font-size: 40px;
+            font-weight: 900;
+            padding: 20px;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+
+        nav {
+            color: #ffffff;
+            padding: 10px;
+            background-color: #000;
+            word-spacing: -10px;
+        }
+
+        article {
+            background-color: #fdba94;
+            color: #fff;
+            padding: 0px;
+            height: 2000px;
+        }
+        
+        header h1, nav ul {
+            margin: 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            word-spacing: 20px;
+        }
+        
+        nav ul li {
+            margin-right: 10px;
+        }
+        
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        img {
+            height: 150px;
+            width: 240px;
+        }
+
+		button {
+            border: none;
+            background-color: #f0f0f0;
+            padding: .5rem;
+            margin: .5rem;
+            border-radius: 0.5rem;
+            box-shadow: 2px 2px 5px rgb(0, 0, 0);
+            transition: all 0.2s ease-in-out;
+            text-align: left;
+        }
+
+        button a {
+            display: block;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+        }
+
+        button a:hover {
+            margin-bottom: 5px;
+            margin-right: 2.5px;
+        }
+
+        
+        .header-emojis {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .header-emojis {
+            position: absolute;
+            top: 1px;
+            right: 50px;
+            font-size: 30px;
+        }
+
+        name {
+            color: rgb(47, 0, 255);
+        }
+
+        .header-emojis {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .hearder-image {
+            position: absolute;
+            top: 15px;
+            right: 50px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .hearder-image img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 3px solid #000;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fdba94;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .fullscreen img {
+            width: 500px;
+            height: 500px;
+        }
+
+        .download-button {
+            position: absolute;
+            left: 100px;
+            top: 5%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 75px;
+            top: 15%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 13px;
+            color: #ffffff;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #1b1b1b;
+            color: #fff;
+            padding: 30px;
+            font-size: 20px;
+        }
+
+        .footertexth2 {
+            margin-right: 5px;
+            font-size: 30px;
+            color: #ff0000;
+        }
+
+        .cardheader {
+            font-size: 26px;
+            padding: 10px;
+            font-weight: bold;
+            text-decoration: underline;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .cardtext {
+            font-size: 16px;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .blue {
+            font-size: 15px;
+        }
+
+        .card1 {
+            border-radius: 10px;
+            width: 70%;
+            padding: 10px;
+            margin-left: 30px;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .card2 {
+            border-radius: 10px;
+            width: 45%;
+            padding: 10px;
+            margin-left: 30px;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .card3 {
+            border-radius: 10px;
+            width: 55%;
+            padding: 10px;
+            margin-left: 30px;
+            color: #000000;
+            background-color: #ffffff;
+            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .imgarticle {
+            width: 200px;
+            height: 200px;
+            margin-left: 37%;
+            margin-right: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>ChessZone 
+        <div class="hearder-image">
+            <img src="logo chessZone.png" alt="Logo" onclick="openFullscreen(this)">
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><font color="Black">0</font></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Article.html">| Article</a></li>
+            <li><a href="Channels.html">| Channels</a></li>
+        </ul>
+    </ul>
+    </nav>
+<article>
+    <br>
+    <div class="card1">
+        <div class="cardheader">Bangladesh Opening <font color="Blue" class="blue">by Mujahedul Anwar</font></div>
+        <div class="cardtext">
+            The opening controls four central squares. The rapid growth of pawns make the opening more strong. It is easy to open the pieces even if the opponent start acttack or defends. This opening is for long cassel lovers. This opening is for 500 - 900 rated players.
+            <br><br>
+            It starts with (F) file pawn to f4. First, a pawn is moved to f4 to take control of the center and help other pieces develop. Then, a knight comes out to a good spot on f3. The bishop goes to g2, which is a special move called "fianchetto," making it strong along a long diagonal. The d4 pawn is pushed forward, making a strong stand in the middle.
+            <br><br>
+            More pieces come out: the e3 pawn and the bishop to d2. Then a knight goes to e2, followed by the queen moving to e2. Finally, the king takes a step to the side, called castling, to keep safe.
+            
+            These moves set up the game for White, giving them a solid position and a plan for future moves.
+            <br><br>
+            Bangladesh opening is stronger than the famous London opening. The opening is given below _
+            <br><br>
+            <img class="imgarticle" src="Article.image/Mujahedul Anwar/Screenshot (469).jpg">
+        </div>
+    </div>
+    <br>
+        <div class="card2">
+            <div class="cardheader">Italian game by Zawata<font color="Blue" class="blue"> by Zawata</font></div>
+            <div class="cardtext">
+                Italian game is for white<br>
+                Italian game begins from 1)e4,e5 2)knight f3,knight c6 3)bishop c4.The point of this is to
+                 control the center quickly with pawn and knight and put bishop into its most dangerous square.By
+                  doing this we can castle safely and reduces the chances of checking to the king.
+
+        </div>
+        </div>
+        <br>
+        <div class="card3">
+            <div class="cardheader">French defence<font color="Blue" class="blue"> by Zawata</font></div>
+            <div class="cardtext">
+            French defence
+            <br><br>
+            This is for black.
+            French defence starts from 1)e4,e6 2)d4,d5.This is one of the first strategic openings that every chess player
+            should learn.After e5 both sides will have pawn chains.One risk of this opening is that the c8-bishop can be 
+            very hard to develop.
+        </div>
+        </div>
+        <br>
+        <div class="card2">
+            <div class="cardheader">Sicilian defense <font color="Blue" class="blue"> by Zawata</font></div>
+            <div class="cardtext">
+            Sicilian defense
+            <br><br>
+            Sicilian defense 
+
+            Sicilian defense starts from 1)e4,c5.This is the most popular choice of aggressive players with 
+            the black pieces.Often white will play 3)Knight f3 4)d4 which will gain central space but it allows 
+             black to benefit by exchanging a central pawn with a bishop’s pawn.
+        </div>
+</article>
+    <footer>
+        <h2 class="footertexth2">Chess World</h2>
+        <a href="https://forms.gle/cTNPyu3iene35KNs9"><font color="white"><b>| Create Channel</b></font></a>
+        <br>
+        <a href="https://forms.gle/AhRtVKyP8mH13geB8"><font color="white"><b>| Upload Video</b></font></a>
+        <br>
+        <a href="https://forms.gle/YBf3cPpLDro8y46W7"><font color="white"><b>| Share Article</b></font></a>
+        <p class="copyright">&copy; 2023 Chess World. <a href="Terms and policies.html"><font color="White">Terms and policy</font></a></p>
+    </footer>
+    
+    <script>
+
+document.getElementById("toggleMenuButton").addEventListener("click", function() {
+    var mainMenu = document.getElementById("mainMenu");
+    mainMenu.classList.toggle("show-menu");
+});
+
+
+
+        function toggleFullscreen(videoId) {
+            var video = document.getElementById(videoId);
+            
+            if (video.requestFullscreen) {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    video.requestFullscreen();
+                }
+            } else if (video.mozRequestFullScreen) { // Firefox
+                if (document.mozFullScreenElement) {
+                    document.mozCancelFullScreen();
+                } else {
+                    video.mozRequestFullScreen();
+                }
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                if (document.webkitFullscreenElement) {
+                    document.webkitExitFullscreen();
+                } else {
+                    video.webkitRequestFullscreen();
+                }
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                if (document.msFullscreenElement) {
+                    document.msExitFullscreen();
+                } else {
+                    video.msRequestFullscreen();
+                }
+            }
+        }
+
+        // code for fullscreen
+        function openFullscreen(img) {
+    var fullscreen = document.createElement('div');
+    fullscreen.classList.add('fullscreen');
+
+    var imgElement = document.createElement('img');
+    imgElement.src = img.src;
+
+    var downloadButton = document.createElement('button');
+    downloadButton.innerText = ' ↓ | DOWNLOAD ';
+    downloadButton.classList.add('download-button');
+    downloadButton.addEventListener('click', function() {
+        var link = document.createElement('a');
+        link.href = img.src;
+        link.download = 'image.jpg';
+        link.click();
+    });
+
+    var backButton = document.createElement('button');
+    backButton.innerText = '← | BACK';
+    backButton.classList.add('back-button');
+    backButton.addEventListener('click', function() {
+        fullscreen.remove();
+        document.removeEventListener('keydown', closeFullscreen);
+    });
+
+    fullscreen.appendChild(downloadButton);
+    fullscreen.appendChild(backButton);
+    fullscreen.appendChild(imgElement);
+    document.body.appendChild(fullscreen);
+
+    document.addEventListener('keydown', closeFullscreen);
+
+    function closeFullscreen(event) {
+        if (event.key === 'Escape') {
+            fullscreen.remove();
+            document.removeEventListener('keydown', closeFullscreen);
+        }
+    }
+}
+
+
+document.getElementById("toggleMenuButton").addEventListener("click", function() {
+    var mainMenu = document.getElementById("mainMenu");
+    mainMenu.classList.toggle("show-menu");
+});
+
+function searchArticles() {
+    var input = document.getElementById("searchBar").value.toLowerCase();
+    var articles = document.querySelectorAll(".card1, .card2, .card3");
+
+    articles.forEach(function(article) {
+        var text = article.textContent.toLowerCase();
+        if (text.includes(input)) {
+            article.style.display = "block";
+        } else {
+            article.style.display = "none";
+        }
+    });
+}
+
+document.getElementById("searchBar").addEventListener("input", searchArticles);
+
+
+//gncfghc
+
+        // Get references to the search bar and card elements
+        const searchBar = document.getElementById("searchBar");
+        const card1 = document.querySelector(".card1");
+        const card2 = document.querySelector(".card2");
+        const card3 = document.querySelector(".card3");
+
+        // Function to filter cards based on search input
+        function filterCards() {
+            const searchTerm = searchBar.value.toLowerCase();
+            if (searchTerm.length === 0) {
+                card1.style.display = "block";
+                card2.style.display = "block";
+                card3.style.display = "block";
+            } else {
+                card1.style.display = card1.textContent.toLowerCase().includes(searchTerm) ? "block" : "none";
+                card2.style.display = card2.textContent.toLowerCase().includes(searchTerm) ? "block" : "none";
+                card3.style.display = card3.textContent.toLowerCase().includes(searchTerm) ? "block" : "none";
+            }
+        }
+
+        // Add event listener to the search bar
+        searchBar.addEventListener("input", filterCards);
+    </script>
+</body>
+</html>
